@@ -1,4 +1,6 @@
-*NOTE* We'll be changing around the way that our applications store their data. In the spec as it's written below, data was to be stored in your browser. Instead, we'll be interacting with an actual server. I believe this is a more common use case and will give you better, real-world skills. -Ben
+*NOTE* 
+
+> We'll be changing around the way that our applications store their data. In the spec as it's written below, data was to be stored in your browser. Instead, we'll be interacting with an actual server. I believe this is a more common use case and will give you better, real-world skills. -Ben
 
 ## Synopsis:
 
