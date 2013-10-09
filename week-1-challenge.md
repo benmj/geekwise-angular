@@ -7,3 +7,11 @@ The application should have the following:
 - The list of todos should be output to the user as an HTML list (`<ul>` filled with `<li>` tags)
 - clicking the todo item marks it as done
     - it's up to you to determine what this looks like. How should the user get feedback to know that something happened? How can the user see old todos?
+
+Extra
+- create a button the clears completed todos from the list
+
+
+## Gotcha's/Hints
+
+We were having some issues with JSFiddle throwing errors and saying pieces of our Javascript were undefined. On the left sidebar under "Frameworks and Extensions," try toggling between different options on the second `<select>` box -- if you have issues.
