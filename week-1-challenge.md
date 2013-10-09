@@ -8,9 +8,11 @@ The application should have the following:
 - clicking the todo item marks it as done
     - it's up to you to determine what this looks like. How should the user get feedback to know that something happened? How can the user see old todos?
 
-Extra
-- create a button the clears completed todos from the list
-
+Extra (ways to trick this sucker out)
+    - create a button the clears completed todos from the list
+    - create a different button that sorts the list alphabetically
+    - create yet another button that sorts the list so all of the uncompleted tasks are at the top and all the completed tasks are at the bottom (but not removed)
+    - clicking on an item lets the user edit it (you determine what the interface looks like)
 
 ## Gotcha's/Hints
 
