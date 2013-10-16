@@ -15,6 +15,9 @@ Now that we know a little bit about filters in Angular, you should be looking fo
 * create checkboxes that toggle whether the list should be Alphabetized and/or sorted by Completion
     * look at the documentation for [filter](http://docs.angularjs.org/api/ng.filter:filter). You will want to use this within a `$scope` method.
 
+Use directives for list items. Things to look at:
+    * ng-hide
+    * binding the inputs to the local scope value of ng-repeat
 
 ## Other: install Node JS
 
