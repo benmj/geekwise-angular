@@ -1,0 +1,1 @@
+# Developing a AngularJS friendly workstation

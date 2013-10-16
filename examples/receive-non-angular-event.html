@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" type="text/css"/>
+
+	<script src="../bower_components/angular/angular.js"></script>
+	<script src="../bower_components/jquery/jquery.js"></script>
+
+	<script>
+		// Angular
+
+		function MyController($scope) {
+			$scope.buttonClicked = false;
+
+			// Mixing in some jQuery - not usually a good idea!
+			// This does happen when you integrate third-party components
+			$('#jQuery').find('button').on('click', function () {
+				$scope.buttonClicked = true;
+
+				// $scope.$apply(function () {
+				// 	$scope.buttonClicked = true;
+				// });
+			});		
+		}
+	</script>
+
+</head>
+<body>
+
+	<p id="jQuery">
+		My jQuery Button
+		<button>Click me!</button>
+	</p>
+
+	<div ng-app>
+
+		<div ng-controller="MyController">
+			buttonClicked variable = {{buttonClicked}}
+		</div>
+
+	</div>
+
+</body>
+</html>
