@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title></title>
+
+		<script src="../bower_components/angular/angular.js"></script>
+	<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css
+	" type="text/css"/>
+
+	<style>
+
+		.doneClass {
+			text-decoration: line-through;
+		}
+
+	</style>
+
+	<script>
+		function MyCrl ($scope) {
+			$scope.todoList = [
+				{text: 'buy milk', done: true},
+				{text: 'buy eggs', done: false },
+				{text: 'sell stocks', done: true },
+				{text: 'tape car bumper', done: true },
+				{text: 'pay for produce', done: false }
+			];
+
+			$scope.myOrderBy = 'done';
+
+			$scope.btnClick = function () {
+				if ($scope.myOrderBy === 'done') {
+					$scope.myOrderBy = '-done';
+				} else {
+					$scope.myOrderBy = 'done';
+				}
+			}
+		}
+	</script>
+
+</head>
+<body ng-app>
+
+	<div ng-controller="MyCrl">
+
+		<button ng-click="btnClick()">Sort</button>
+
+		<ul>
+			<li ng-repeat="item in todoList | orderBy:myOrderBy" ng-class="{ doneClass: item.done }">
+				{{item.text}}
+			</li>
+		</ul>
+
+	</div>
+
+</body>
+</html>

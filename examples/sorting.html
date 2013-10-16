@@ -257,15 +257,15 @@
 			];
 		});
 
-		myApp.filter('bees', function () {
+		myApp.filter('ltrs', function () {
 			// this is going to be the entire array!
-			return function (input) {
+			return function (input, myChar) {
 				var i, returns = [];
 
 				for (var i = input.length - 1; i >= 0; i--) {
 					var item = input[i];
 
-					if (item.name.charAt(0) == 'B')
+					if (item.name.charAt(0) === myChar)
 						returns.push(item);
 				};
 				return returns;
@@ -275,6 +275,8 @@
 		function SortController($scope, Data) {
 			$scope.countries = Data;
 		}
+
+		$scope.stringizard = 'V';
 </script>
 
 </head>
@@ -289,9 +291,10 @@
 
 		<!-- <pre>{{countries|json}}</pre> -->
 
+		<input ng-model="stringizard"></input>
+
 		<ul>
-			<li ng-repeat="country in countries | orderBy:'name'">
-			<!-- <li ng-repeat="country in countries | orderBy:'-name'"> -->
+			<li ng-repeat="country in countries | filter:stringizard:fa">
 				{{country.name}}
 			</li>
 		</ul>

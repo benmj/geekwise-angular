@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title></title>
+
+	<script src="../bower_components/angular/angular.js"></script>
+	<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css
+	" type="text/css"/>
+
+	<script>
+
+		function MyCtrl($scope) {
+			$scope.$watch('myModel', function (newVal, oldVal, scope) {
+				console.log(newVal);
+			});
+		}
+
+	</script>
+
+</head>
+<body ng-app>
+
+	<div ng-controller="MyCtrl">
+		<input ng-model="myModel"></input>
+	</div>
+
+</body>
+</html>

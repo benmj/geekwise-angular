@@ -15,11 +15,11 @@
 			// Mixing in some jQuery - not usually a good idea!
 			// This does happen when you integrate third-party components
 			$('#jQuery').find('button').on('click', function () {
-				$scope.buttonClicked = true;
+				// $scope.buttonClicked = true;
 
-				// $scope.$apply(function () {
-				// 	$scope.buttonClicked = true;
-				// });
+				$scope.$apply(function () {
+					$scope.buttonClicked = true;
+				});
 			});		
 		}
 	</script>

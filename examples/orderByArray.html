@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title></title>
+	<script src="../bower_components/angular/angular.js"></script>
+	<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css
+	" type="text/css"/>
+
+	<script>
+		function MyCtrl($scope) {
+			$scope.myNums = [
+				1,
+				5,
+				8,
+				3,
+				22222,
+				3123,
+				1,
+			];
+
+			$scope.identity = angular.identity;
+		} 
+	</script>
+
+</head>
+<body ng-app>
+
+	<div ng-controller="MyCtrl">
+		<ul>
+			<li ng-repeat="number in myNums | orderBy:identity">{{number}}</li>
+		</ul>
+	</div>
+
+</body>
+</html>

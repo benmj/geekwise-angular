@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title></title>
+	<script src="../bower_components/angular/angular.js"></script>
+	<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css
+	" type="text/css"/>
+
+	<script>
+	var myApp = angular.module('myApp', []);
+
+	myApp.directive('superhero', function () {
+		return {
+			scope: {
+				// superhero: '='   // this is binding the local scope.superhero to a model on the parent
+				// superhero: '&'  // this is a reference to a function on parent
+				// superhero: '@'
+			},
+			template: '<input ng-model="name" /> My name is {{name}} ',
+			link: function (scope, element, attributes) {
+				scope.$watch('name', function (newName) {
+					if (newName) 
+					console.log(newName);
+				});
+			}
+		}
+	});
+
+	function MyController($scope) {
+		$scope.badguys = 0;
+
+		$scope.vanquisher = function () {
+			$scope.badguys += 2;
+		}
+
+		$scope.supervanquish = function () {
+			$scope.badguys += 1000;
+		}
+
+		$scope.echoString = "help me!";
+	}
+	</script>
+
+</head>
+<body ng-app="myApp">
+
+	<div ng-controller="MyController">
+
+<!-- 		<p>
+			<h3>This is the controller</h3>
+			<input ng-model="name"></input>
+		</p>
+ -->
+		<p>
+			<h3>This is the controller</h3>
+			<b>Badguys vanquished: {{badguys|number}}</b>
+		</p>
+
+		<hr />
+
+		<div superhero></div>
+		<div superhero></div>
+		<div superhero></div>
+
+	</div>
+</body>
+</html>

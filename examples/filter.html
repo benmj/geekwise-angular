@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+
+	<script src="../bower_components/angular/angular.js"></script>
+	<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css
+	" type="text/css"/>
+
+	<script>
+		function MyCtrl($scope) {
+			$scope.date = new Date();
+		}
+	</script>
+
+</head>
+<body ng-app>
+
+	<div ng-controller="MyCtrl">
+		<p>Right now it is {{date | date:'yy/MM/dd'}}</p>
+	</div>
+
+</body>
+</html>
