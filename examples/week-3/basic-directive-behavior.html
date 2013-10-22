@@ -1,0 +1,52 @@
+<!-- directives are the place to DOM manipulation and hook to browser events
+
+and you should try to make them as independent as possible
+ -->
+
+<html>
+<head>
+	<title></title>
+	<script src="../../bower_components/angular/angular.min.js"></script>
+
+
+	<style>
+
+		div {
+			display: inline-block;
+		}
+
+		.highlighted {
+			border: 5px solid red;
+		}
+
+	</style>
+
+	<script>
+
+		var myApp = angular.module('myApp', []);
+
+		myApp.directive('mouseover', function () {
+			return function (scope, element, attributes) {
+				element.bind('mouseover', function () {
+					element.addClass(attributes.highlightClass);
+				})
+			};
+		});
+
+		myApp.directive('mouseout', function () {
+			return function(scope, element, attributes) {
+				element.bind('mouseout', function () {
+					element.removeClass(attributes.highlightClass);
+				});
+			}	
+		});
+	</script>
+</head>
+<body ng-app="myApp">
+
+	<div mouseover mouseout highlight-class="highlighted">
+		Hello World!
+	</div>
+
+</body>
+</html>

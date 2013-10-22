@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title></title>
+	<script src="../../bower_components/angular/angular.min.js"></script>
+
+
+	<style>
+
+		div {
+			display: inline-block;
+		}
+
+		.highlighted {
+			border: 5px solid red;
+		}
+
+	</style>
+
+	<script>
+
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('MyController', function ($scope) {
+
+			$scope.counter = 0;
+
+			$scope.increment = function () {
+				$scope.counter += 1;
+			}
+
+		});
+
+		myApp.directive('mouseover', function () {
+			return function (scope, element, attributes) {
+				element.bind('mouseover', function () {
+					element.addClass(attributes.highlightClass);
+
+					// scope.$apply(function () {
+					// 	scope.increment();
+					// });
+				})
+			};
+		});
+
+		myApp.directive('mouseout', function () {
+			return {
+				scope: {
+					mouseout: '&'
+				},
+				link: function(scope, element, attributes) {
+					element.bind('mouseout', function () {
+						element.removeClass(attributes.highlightClass);
+
+						// so, this is a string that is actually being 'eval'uated!
+
+						// scope.$apply(attributes.mouseout);
+						scope.$apply(function () {
+							// scope.$parent.increment();
+							scope.mouseout();
+						});
+					});
+				}	
+			}
+		});
+	</script>
+</head>
+<body ng-app="myApp">
+
+	<div ng-controller="MyController">
+
+		<h1>{{counter}}</h1>
+
+		<div mouseover mouseout="increment()" highlight-class="highlighted">
+			Hello World!
+		</div>
+
+	</div>
+
+</body>
+</html>

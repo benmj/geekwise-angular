@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular Todo List</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp", []);
+
+		function ListCtrl ($scope) {
+			$scope.todoList = [];
+			$scope.itemContent = '';
+			$scope.sorter = [];
+			$scope.comp = $scope.alpha = false;
+
+			$scope.addToList = function (contentOfItem) {
+				if (contentOfItem) {
+					$scope.todoList.push({
+						text: contentOfItem, 
+						done: false, 
+						edit: false
+					});
+
+					$scope.itemContent = '';
+				}
+			}
+
+			$scope.clear = function() {
+         		for (var i = $scope.todoList.length - 1; i >= 0; i--) {
+           			var item = $scope.todoList[i];
+           			if (item.done){
+           				$scope.todoList.splice(i,1);
+           			}
+           		}
+			}
+
+			$scope.setSort = function() {
+				var mySort = [];
+
+				if ($scope.comp)
+					mySort.push('done');
+				if ($scope.alpha)
+					mySort.push('text');
+
+				$scope.sorter = mySort;
+			}
+
+			$scope.$watch(function () {
+				return $scope.comp + $scope.alpha;
+			}, function (newVal, oldVal, scope) {
+				scope.setSort();
+			}
+		}
+	</script>
+	<style type="text/css">
+		.doneClass{
+			text-decoration: line-through;
+			color:gray;
+		}
+	</style>
+</head>
+
+<body ng-app="myApp">
+
+	<div ng-controller = "ListCtrl">
+
+		<input ng-model = "itemContent"></input>
+		<button ng-click ="addToList(itemContent)">Enter</button>
+
+		<h1>To Do List</h1>
+		<ul>
+			<li ng-class="{doneClass: item.done}" ng-repeat = "item in todoList | orderBy: sorter">
+				<input type = 'checkbox' ng-model = "item.done"/>
+				<span ng-click = "item.edit = true" ng-hide = "item.edit"> {{item.text}}</span>
+				<input ng-model = "item.text" ng-hide="!item.edit"></input>
+				<button ng-hide="!item.edit" ng-click = "item.edit = false">done</button>
+			</li>
+		</ul>
+		<button ng-click = "clear()">Clear</button>
+
+		<input id="comp" type = "checkbox" ng-model="comp"/>
+		<label for="comp">check for completion sort</label>
+
+		<input id="alpha" type = "checkbox" ng-model="alpha"/>
+		<label for="alpha">check for alpha sort</label>
+
+	</div>
+
+</body>
+
+</html>

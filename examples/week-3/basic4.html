@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title></title>
+	<script src="../../bower_components/angular/angular.min.js"></script>
+
+
+	<style>
+
+		div {
+			display: inline-block;
+		}
+
+		.highlighted {
+			border: 5px solid red;
+		}
+
+	</style>
+
+	<script>
+
+		var myApp = angular.module('myApp', []);
+
+		myApp.directive('superhero', function () {
+			return {
+				// A - attribute <div superhero>
+				// E - element <superhero>
+				// C - class <div class="superhero">
+				// M - coMment
+
+				restrict: 'M',
+				link: function () {
+					console.log('here I am to save the day');
+				}
+			}
+		})
+
+	</script>
+</head>
+<body ng-app="myApp">
+
+	<!-- directive: superhero -->
+</body>
+</html>
