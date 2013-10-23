@@ -62,7 +62,8 @@ sorry guys, this is broken!
 
 		myApp.directive('seconddirective', function () {
 			return {
-				require: 'firstdirective',
+				// require: 'firstdirective',
+				require: '^ngController',
 				link: function(scope, element, attributes, firstdirective) {
 					element.bind('click', function () {
 						firstdirective.increment();
@@ -76,9 +77,12 @@ sorry guys, this is broken!
 
 	<div ng-controller="MyController">
 
-		<div class="cyan" firstdirective>First!</div>
+		<div class="cyan" firstdirective>First!
 
-		<div class="cyan" seconddirective>Second!</div>
+			<div class="cyan" secondirective>Second!</div>
+
+		</div>
+
 	</div>
 </body>
 </html>
