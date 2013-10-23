@@ -12,10 +12,8 @@
 
 		$http({
 			method: 'GET',
-			url: 'http://geekwise-angularjs.herokuapp.com/ben/users',
-			data: {
-				nickName: "Dough boy!"
-			} 
+			// url: 'http://geekwise-angularjs.herokuapp.com/ben/users/526622379ae4830200000001',
+			url: 'http://localhost:5000/ben/users/526622379ae4830200000001',
 		}).success(function (data, status, headers, config) {
 			$scope.users = data;
 		}).error(function (data, status, headers, config) {
